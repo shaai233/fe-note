@@ -1,0 +1,71 @@
+{
+    "version": "3.1.2",
+    "name": "KTool",
+    "description": "KTool",
+    "homepage_url": "https://ktool.corp.kuaishou.com",
+    "manifest_version": 3,
+    "icons": {
+        "16": "static/images/icon-16.png",
+        "48": "static/images/icon-48.png",
+        "128": "static/images/icon-128.png"
+    },
+    "permissions": [
+        "tabs",
+        "proxy",
+        "cookies",
+        "storage",
+        "scripting",
+        "activeTab",
+        "background",
+        "geolocation",
+        "contextMenus",
+        "notifications",
+        "clipboardRead",
+        "clipboardWrite",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "declarativeNetRequestWithHostAccess"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "contentScript.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_title": "KTool",
+        "default_popup": "extension_popup.html"
+    },
+    "sandbox": {
+        "pages": [
+            "extension_background.html"
+        ]
+    },
+    "chrome_url_overrides": {
+        "newtab": "extension_newtab.html"
+    },
+    "background": {
+        "type": "module",
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "extension_background.html",
+                "background.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "content_security_policy": {},
+    "offline_enabled": true
+}
